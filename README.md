@@ -1,24 +1,56 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+データベース設計
 
-Things you may want to cover:
+usersテーブル
+name
+email
+encrypted_password
+family_name
+first_name
+family_name_katakana
+first_name_katakana
+birth_day
 
-* Ruby version
+アソシエーション
+has_many :products dependent: :destroy
+belongs_to :destination dependent: :destroy
+belongs_to :card dependent: :destroy
 
-* System dependencies
+buyerテーブル
+family_name
+first_name
+family_name_katakana
+first_name_katakana
+user_id
+prefecture
+city
+email
+phone_number
 
-* Configuration
+アソシエーション
+belongs_to :user
 
-* Database creation
+sell_goods
+name
+prise
+user_id
 
-* Database initialization
+アソシエーション
+belongs_to :user dependent: :destroy
+has_many :images dependent: :destroy
 
-* How to run the test suite
+imagesテーブル
+image
+sell_goods_id
 
-* Services (job queues, cache servers, search engines, etc.)
+アソシエーション
+has_many :products
 
-* Deployment instructions
+cardテーブル
+user_id
+card_id
 
-* ...
+アソシエーション
+belongs_to :user
+
