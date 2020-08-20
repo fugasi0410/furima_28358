@@ -4,7 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :name, presence: true
-         validates :name, length: { in: 1..6 }  
-         validates :email, presence: true, uniqueness: true 
+  with_options presence: true do
+    validates :name, length: { in: 1..6 }  
+    validates :email, uniqueness: true 
+    validates :familyname, :firstname
+    validates :katakana_familyname, :katakana_firstname
+    validates :birthday
+    end
+  
+str = [(/\A[ぁ-んァ-ンー-領]/),/[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/]
+with_options format: true do
+  validates :familyname, :firstname, format: str[0]
+  validates :katakana_familyname, :katakana_firstname
 end

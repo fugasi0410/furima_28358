@@ -10,7 +10,7 @@ describe User do
         expect(@user).to be_valid
       end
       it "nameが6文字以下で登録できる" do
-        @user.name = "aaaaaa"
+        @user.name = "ああああ"
         expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
@@ -59,6 +59,17 @@ describe User do
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it "emailに@が含まれなければ登録できない" do
+        @user.email = "aaaaaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email does not contain @")
+      end
+      it "名前が全角でなければ登録できない" do
+        @user.name = "aaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name is not full-width")
       end
     end
   end
