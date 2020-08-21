@@ -28,6 +28,17 @@
 | Column               | Type    | Options                        |
 | -------------------- | ------- | ------------------------------ |
 | user_id              | integer | null: false, foreign_key: true |
+| sell_goods           | integer | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## address テーブル (住所)
+
+| Column               | Type    | Options                        |
+| -------------------- | ------- | ------------------------------ |
+| buyer_id             | integer | null: false, foreign_key: true |
 | prefecture           | string  | null: false                    |
 | city                 | string  | null: false                    |
 | email                | string  | null: false                    |
@@ -35,18 +46,23 @@
 
 ### Association
 
-- belongs_to :user
+- belongs_to :buyer
 
-## sell_goods テーブル
+## sell_goods テーブル (商品)
 
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| name    | string  | null: false                    |
-| prise   | string  | null: false                    |
-| user_id | integer | null: false, foreign_key: true |
-| status  | string  | null: false                    |
-| cost    | string  | null: false                    |
-| size    | string  | null: false                    |
+| Column              | Type    | Options                        |
+| ------------------- | ------- | ------------------------------ |
+| name                | string  | null: false                    |
+| prise               | string  | null: false                    |
+| user_id             | integer | null: false, foreign_key: true |
+| status              | string  | null: false                    |
+| cost                | string  | null: false                    |
+| size                | string  | null: false                    |
+| category            | string  | null: false                    |
+| shipping_cost       | string  | null: false                    |
+| shipping_days       | string  | null: false                    |
+| shipping_prefecture | string  | null: false                    |
+
 
 ### Association
 
