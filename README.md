@@ -40,7 +40,7 @@
 | Column               | Type    | Options                        |
 | -------------------- | ------- | ------------------------------ |
 | buyer_id             | integer | null: false, foreign_key: true |
-| prefecture           | string  | t.integer                      |
+| prefecture           | integer | null: false                    |
 | city                 | string  | null: false                    |
 | email                | string  | null: false                    |
 | phone_number         | string  | null: false                    |
@@ -57,12 +57,12 @@
 | Column              | Type    | Options                        |
 | ------------------- | ------- | ------------------------------ |
 | name                | string  | null: false                    |
-| prise               | string  | null: false                    |
+| prise               | integer | null: false                    |
 | user_id             | integer | null: false, foreign_key: true |
 | status              | integer | null: false                    |
 | cost                | string  | null: false                    |
 | size                | string  | null: false                    |
-| category            | string  | null: false                    |
+| category            | integer | null: false                    |
 | shipping_cost       | integer | null: false                    |
 | shipping_days       | integer | null: false                    |
 | shipping_prefecture | integer | null: false                    |
