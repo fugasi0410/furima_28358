@@ -18,9 +18,8 @@
 
 ### Association
 
-- has_many :products dependent: :destroy
-- belongs_to :destination dependent: :destroy
-- belongs_to :buyer dependent: :destroy
+- has_many :sell_good dependent: :destroy
+- has_one :buyer dependent: :destroy
 
 
 ## buyer　(購入者情報) テーブル
@@ -33,7 +32,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :sell_goods
+- belongs_to :sell_good
 
 ## address テーブル (住所)
 
@@ -72,7 +71,7 @@
 
 - belongs_to :user dependent: :destroy
 - has_many :images dependent: :destroy
-- belongs_to :buyer dependent: :destroy
+- has_one :buyer
 
 ## image テーブル
 
@@ -83,4 +82,4 @@
 
 ### Association
 
-- has_many :products
+- belongs_to :sell_good
