@@ -18,7 +18,7 @@
 
 ### Association
 
-- has_many :sell_good dependent: :destroy
+- has_many :sell_goods dependent: :destroy
 - has_one :buyer dependent: :destroy
 
 
