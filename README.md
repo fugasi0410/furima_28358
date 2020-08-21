@@ -23,14 +23,10 @@
 - belongs_to :card dependent: :destroy
 
 
-## buyer テーブル
+## buyer　(購入者情報) テーブル
 
 | Column               | Type    | Options                        |
 | -------------------- | ------- | ------------------------------ |
-| family_name          | string  | null: false                    |
-| first_name           | string  | null: false                    |
-| family_name_katakana | string  | null: false                    |
-| first_name_katakana  | string  | null: false                    |
 | user_id              | integer | null: false, foreign_key: true |
 | prefecture           | string  | null: false                    |
 | city                 | string  | null: false                    |
@@ -48,6 +44,10 @@
 | name    | string  | null: false                    |
 | prise   | string  | null: false                    |
 | user_id | integer | null: false, foreign_key: true |
+| status  | string  | null: false                    |
+| cost    | string  | null: false                    |
+| size    | string  | null: false                    |
+
 ### Association
 
 - belongs_to :user dependent: :destroy
@@ -63,14 +63,3 @@
 ### Association
 
 - has_many :products
-
-## card テーブル
-
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| user_id | integer | null: false, foreign_key: true |
-| card_id | string  | null: false                    |
-
-### Association
-
-- belongs_to :user
