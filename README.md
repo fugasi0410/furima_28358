@@ -20,7 +20,7 @@
 
 - has_many :products dependent: :destroy
 - belongs_to :destination dependent: :destroy
-- belongs_to :card dependent: :destroy
+- belongs_to :buyer dependent: :destroy
 
 
 ## buyer　(購入者情報) テーブル
@@ -28,21 +28,25 @@
 | Column               | Type    | Options                        |
 | -------------------- | ------- | ------------------------------ |
 | user_id              | integer | null: false, foreign_key: true |
-| sell_goods           | integer | null: false, foreign_key: true |
+| sell_goods_id        | integer | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :sell_goods
 
 ## address テーブル (住所)
 
 | Column               | Type    | Options                        |
 | -------------------- | ------- | ------------------------------ |
 | buyer_id             | integer | null: false, foreign_key: true |
-| prefecture           | string  | null: false                    |
+| prefecture           | string  | t.integer                      |
 | city                 | string  | null: false                    |
 | email                | string  | null: false                    |
 | phone_number         | string  | null: false                    |
+| post_code            | string  | null: false                    |
+| street_number        | string  | null: false                    |
+| building_name        | string  | null: false                    |
 
 ### Association
 
@@ -55,19 +59,20 @@
 | name                | string  | null: false                    |
 | prise               | string  | null: false                    |
 | user_id             | integer | null: false, foreign_key: true |
-| status              | string  | null: false                    |
+| status              | integer | null: false                    |
 | cost                | string  | null: false                    |
 | size                | string  | null: false                    |
 | category            | string  | null: false                    |
-| shipping_cost       | string  | null: false                    |
-| shipping_days       | string  | null: false                    |
-| shipping_prefecture | string  | null: false                    |
+| shipping_cost       | integer | null: false                    |
+| shipping_days       | integer | null: false                    |
+| shipping_prefecture | integer | null: false                    |
 
 
 ### Association
 
 - belongs_to :user dependent: :destroy
 - has_many :images dependent: :destroy
+- belongs_to :buyer dependent: :destroy
 
 ## image テーブル
 
