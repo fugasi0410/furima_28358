@@ -17,3 +17,4 @@ with_options format: true do
   validates :familyname, :firstname, format: str[0]
   validates :katakana_familyname, :katakana_firstname
 end
+end
