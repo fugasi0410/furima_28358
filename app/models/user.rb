@@ -12,9 +12,15 @@ class User < ApplicationRecord
     validates :birthday
     end
   
-str = [(/\A[ぁ-んァ-ンー-領]/),/[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/]
-with_options format: true do
-  validates :familyname, :firstname, format: str[0]
-  validates :katakana_familyname, :katakana_firstname
+  # 全角のカタカナを使用していないかどうかを検証
+  with_options presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message:'Full-width katakana characters' }do
+    validates :katakana_familyname
+    validates :katakana_firstname
+
+end
+
+  with_options presence: true, format: { with: (/\A[ぁ-んァ-ンー-領]/), message:'Full-width characters' }do
+    validates :familyname
+    validates :firstname
 end
 end
