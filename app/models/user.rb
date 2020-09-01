@@ -24,3 +24,4 @@ end
     validates :firstname
 end
 end
+end
