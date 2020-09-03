@@ -6,7 +6,12 @@ class SellGoodsController < ApplicationController
     @sell_goods = Sell_good.new
   end
   def create
-    Sell_good.create(sell_goods_params)
+    @sell_goods = Sell_good.new(sell_goods_params)
+    if @sell_goods.save
+      @sell_goods = Sell_good.index
+    else
+      @sell_goods = Sell_good.new
+    end
   end
 
   private
