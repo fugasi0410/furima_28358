@@ -19,6 +19,21 @@ describe Sell_good do
       end
     end
     context 'うまくいかないとき' do
+      it "価格の範囲が 300より安い場合は登録できない" do
+        @sell_good.prise = 200
+        @sell_good.valid?
+        expect(@sell_good.errors.full_messages).to include("be short of price")
+      end
+      it "価格の範囲が 9,999,999 より高い場合は登録できない" do
+        @sell_good.prise = 10000000
+        @sell_good.valid?
+        expect(@sell_good.errors.full_messages).to include("overpriced")
+      end
+      it "販売価格は全角数字だと登録できない" do
+        @sell_good.prise = １００
+        @sell_good.valid?
+        expect(@sell_good.errors.full_messages).to include("half-width number,please")
+      end
       it "imageが空だと投稿できない" do
         @sell_good.image = nil
         @sell_good.valid?
