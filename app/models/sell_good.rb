@@ -6,9 +6,9 @@ class SellGood < ApplicationRecord
     validates :status
     validates :cost
     validates :size
-    validates　:category
-    validates　:shipping_cost
-    validates　:shipping_days
-    validates　:shipping_prefecture
+    validates :category
+    validates :shipping_cost
+    validates :shipping_days
+    validates :shipping_prefecture
   end
 end

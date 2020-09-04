@@ -1,9 +1,10 @@
 
 
 Rails.application.routes.draw do
-  root 
+  root "sell_goods#index"
+  #resources :sell_goods, onry: [:index]
 
-  root "users#new"
+  # root "users#new"
 
   devise_for :users
   resources :users, only: [:edit, :update]

@@ -8,9 +8,10 @@ class SellGoodsController < ApplicationController
   def create
     @sell_goods = Sell_good.new(sell_goods_params)
     if @sell_goods.save
-      @sell_goods = Sell_good.index
+      redirect_to sell_goods_path(@sell_goods)
     else
       @sell_goods = Sell_good.new
+      render :index
     end
   end
 
