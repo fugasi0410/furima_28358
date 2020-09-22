@@ -1,10 +1,12 @@
 class SellGoodsController < ApplicationController
 
   def index
-    #@sell_goods = Sell_good.all.order("created_at DESC")
+    @sell_goods = SellGood.all
+    #@sell_goods = SellGood.all.order("created_at DESC")
   end
   def new
-    #@sell_goods = Sell_good.new
+    @sell_good = SellGood.new
+   # @sell_good = SellGood.order("created_at DESC")
   end
   def create
     @sell_goods = Sell_good.new(sell_goods_params)
@@ -16,7 +18,7 @@ class SellGoodsController < ApplicationController
     end
   end
   def show
-    #@sell_goods = Sell_good.all
+    @sell_goods = SellGood.all
   end
 
   private
