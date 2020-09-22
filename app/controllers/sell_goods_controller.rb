@@ -15,6 +15,9 @@ class SellGoodsController < ApplicationController
       render :index
     end
   end
+  def show
+    #@sell_goods = Sell_good.all
+  end
 
   private
   def sell_good_params
