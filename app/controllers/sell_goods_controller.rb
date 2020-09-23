@@ -21,6 +21,14 @@ class SellGoodsController < ApplicationController
   def show
     @sell_good = SellGood.find(params[:id])
   end
+  def edit
+    @sell_good = SellGood.find(params[:id])
+  end
+  def update
+    sell_good = SellGood.find(params[:id])
+    sell_good.update(sell_good_params)
+    redirect_to sell_goods_path(@sell_goods)
+  end
 
   private
   def sell_good_params
