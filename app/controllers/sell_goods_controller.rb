@@ -1,21 +1,19 @@
 class SellGoodsController < ApplicationController
 
-  before_action :set_sellgood, only: [:edit, :show, :update]
+  before_action :set_sellgood, only: [:edit, :show, :update, :destroy]
 
   def index
     @sell_goods = SellGood.all.order("created_at DESC")
   end
   def new
     @sell_good = SellGood.new
-   # @sell_good = SellGood.order("created_at DESC")
   end
   def create
     @sell_good = SellGood.new(sell_good_params)
     if @sell_good.save
       redirect_to sell_goods_path(@sell_goods)
-    else
-      # @sell_good = SellGood.new
-      render 'new'
+      else
+        render 'new'
     end
   end
   
@@ -27,8 +25,16 @@ class SellGoodsController < ApplicationController
   def update
     if @sell_good.update(sell_good_params)
       redirect_to sell_goods_path(@sell_goods)
+      else
+        render 'edit'
+    end
+  end
+  def destroy
+    if @sell_good.destroy
+      redirect_to root_path
     else
-      render 'edit'
+      render 'show'
+    end
   end
 
   private
@@ -39,5 +45,4 @@ class SellGoodsController < ApplicationController
   def set_sellgood
     @sell_good = SellGood.find(params[:id])
   end
-
 end
