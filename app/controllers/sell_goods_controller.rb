@@ -31,7 +31,7 @@ class SellGoodsController < ApplicationController
   end
   def destroy
     if @sell_good.destroy
-      redirect_to sell_goods_path(@sell_goods)
+      redirect_to root_path
     else
       render 'show'
     end
