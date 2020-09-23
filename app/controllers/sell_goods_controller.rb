@@ -17,13 +17,14 @@ class SellGoodsController < ApplicationController
       render 'new'
     end
   end
+  
   def show
-    #@sell_goods = SellGood.all
+    @sell_good = SellGood.find(params[:id])
   end
 
   private
   def sell_good_params
-    params.require(:sell_good).permit(:name, :cost, :status, :size_id, :category_id, :shipping_cost_id, :shipping_day_id, :shipping_prefecture_id, :price, :image)
+    params.require(:sell_good).permit(:name, :cost, :status, :size_id, :category_id, :shipping_cost_id, :shipping_day_id, :shipping_prefecture_id, :price, :image).merge(user_id: current_user.id)
     #params.require(:sell_good).permit(:sell_good, :image).merge(user_id: sell_good.id)
   end
 
