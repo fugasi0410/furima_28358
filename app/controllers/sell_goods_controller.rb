@@ -7,14 +7,12 @@ class SellGoodsController < ApplicationController
   end
   def new
     @sell_good = SellGood.new
-   # @sell_good = SellGood.order("created_at DESC")
   end
   def create
     @sell_good = SellGood.new(sell_good_params)
     if @sell_good.save
       redirect_to sell_goods_path(@sell_goods)
       else
-        # @sell_good = SellGood.new
         render 'new'
     end
   end
@@ -32,8 +30,11 @@ class SellGoodsController < ApplicationController
     end
   end
   def destroy
-    @sell_good.destroy
-    redirect_to sell_goods_path(@sell_goods)
+    if @sell_good.destroy
+      redirect_to sell_goods_path(@sell_goods)
+    else
+      render 'show'
+    end
   end
 
   private
