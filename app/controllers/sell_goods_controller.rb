@@ -1,5 +1,7 @@
 class SellGoodsController < ApplicationController
 
+  before_action :set_sellgood, only: [:edit, :show]
+
   def index
     @sell_goods = SellGood.all
     #@sell_goods = SellGood.all.order("created_at DESC")
@@ -19,21 +21,27 @@ class SellGoodsController < ApplicationController
   end
   
   def show
-    @sell_good = SellGood.find(params[:id])
   end
+
   def edit
-    @sell_good = SellGood.find(params[:id])
   end
+  
   def update
     sell_good = SellGood.find(params[:id])
-    sell_good.update(sell_good_params)
-    redirect_to sell_goods_path(@sell_goods)
+    if @sell_good.update(sell_good_params)
+      redirect_to sell_goods_path(@sell_goods)
+    else
+      render 'edit'
   end
 
   private
   def sell_good_params
     params.require(:sell_good).permit(:name, :cost, :status, :size_id, :category_id, :shipping_cost_id, :shipping_day_id, :shipping_prefecture_id, :price, :image).merge(user_id: current_user.id)
     #params.require(:sell_good).permit(:sell_good, :image).merge(user_id: sell_good.id)
+  end
+
+  def set_sellgood
+    @sell_good = SellGood.find(params[:id])
   end
 
 end
