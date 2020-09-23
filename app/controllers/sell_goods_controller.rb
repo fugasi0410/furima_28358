@@ -25,7 +25,6 @@ class SellGoodsController < ApplicationController
 
   def edit
   end
-  
   def update
     sell_good = SellGood.find(params[:id])
     if @sell_good.update(sell_good_params)
