@@ -5,12 +5,12 @@ class Pay
   
   with_options presence: true do
     validates :token
-    validates :post_code
+    validates :post_code, length: { is: 8 }, numericality: true
     validates :prefecture_id
     validates :city
     validates :street_number
     # validates :building_name
-    validates :phone_number
+    validates :phone_number, length: { in: 1..11 }, numericality: true
   end
   def save
     order = Order.create(user_id: user_id,sell_good_id: sell_good_id)

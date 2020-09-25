@@ -1,12 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :set_sellgood, only: [:index, :create]
 
   def index
-    @sell_good = SellGood.find(params[:sell_good_id])
     @order = Pay.new
   end
 
   def create
-    @sell_good = SellGood.find(params[:sell_good_id])
     @order = Pay.new(order_params)
     if @order.valid?
       pay_item
@@ -29,6 +28,10 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def set_sellgood
+    @sell_good = SellGood.find(params[:sell_good_id])
   end
 
 end
