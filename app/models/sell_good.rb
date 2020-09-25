@@ -7,6 +7,7 @@ class SellGood < ApplicationRecord
   belongs_to_active_hash :shipping_prefecture
   has_one_attached :image
   belongs_to :user
+  has_one :order
 
   with_options presence: true do
     validates :name
