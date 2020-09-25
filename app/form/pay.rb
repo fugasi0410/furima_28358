@@ -5,7 +5,7 @@ class Pay
   
   with_options presence: true do
     validates :token
-    validates :post_code, length: { is: 8 }, numericality: true
+    validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/}
     validates :prefecture_id
     validates :city
     validates :street_number
