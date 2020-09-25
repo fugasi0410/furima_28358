@@ -4,6 +4,7 @@ class SellGoodsController < ApplicationController
 
   def index
     @sell_goods = SellGood.all.order("created_at DESC")
+    
   end
   def new
     @sell_good = SellGood.new
