@@ -9,7 +9,6 @@ class Pay
     validates :prefecture_id
     validates :city
     validates :street_number
-    # validates :building_name
     validates :phone_number, length: { in: 1..11 }, numericality: true
   end
   def save
