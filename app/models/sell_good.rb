@@ -18,6 +18,7 @@ class SellGood < ApplicationRecord
     validates :shipping_cost
     validates :shipping_day
     validates :shipping_prefecture
+    validates :image
   end
 
   # 金額の範囲
