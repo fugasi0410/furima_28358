@@ -136,7 +136,9 @@
 
               <%# 商品が売れていればsold outの表示 %>
               <div class='sold-out'>
-                <span>Sold Out!!</span>
+                <% if sell_good.order.present?%>
+                  <span>Sold Out!!</span>
+                <% end %>
               </div>
               <%# //商品が売れていればsold outの表示 %>
 
