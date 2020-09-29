@@ -9,11 +9,11 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :name, length: { in: 1..6 }  
-    validates :email, #uniqueness: true 
+    validates :email, uniqueness: true, format:{ with:/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
     validates :family_name, :first_name
     validates :family_name_katakana, :first_name_katakana
     validates :birth_day
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/ }
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/ }
   end
   
   # 全角のカタカナを使用していないかどうかを検証
