@@ -9,21 +9,21 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :name, length: { in: 1..6 }  
-    validates :email, uniqueness: true 
+    validates :email, #uniqueness: true 
     validates :family_name, :first_name
     validates :family_name_katakana, :first_name_katakana
     validates :birth_day
-    end
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/ }
+  end
   
   # 全角のカタカナを使用していないかどうかを検証
-  with_options presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message:'Full-width katakana characters' }do
+  with_options presence: true, format: { with: /\A[\p{katakana}ー－&&[^ -~｡-ﾟ]]+\z/, message:'Full-width katakana characters' }do
     validates :family_name_katakana
     validates :first_name_katakana
-
-end
+  end
 
   with_options presence: true, format: { with: (/\A[ぁ-んァ-ンー-領]/), message:'Full-width characters' }do
     validates :family_name
     validates :first_name
-end
+  end
 end

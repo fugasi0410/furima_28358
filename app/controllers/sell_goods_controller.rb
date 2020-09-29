@@ -1,5 +1,5 @@
 class SellGoodsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:update, :new, :create]
   before_action :set_sellgood, only: [:edit, :show, :update, :destroy]
 
   def index

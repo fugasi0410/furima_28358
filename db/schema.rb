@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_105839) do
     t.string "name"
     t.integer "price"
     t.integer "user_id"
-    t.integer "status"
+    t.text "status"
     t.integer "size_id"
     t.integer "category_id"
     t.integer "shipping_cost_id"
