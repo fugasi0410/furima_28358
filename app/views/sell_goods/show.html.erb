@@ -31,7 +31,9 @@
     <% end %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if user_signed_in? && current_user.id != @sell_good.user_id %>
-      <%= link_to '購入画面に進む', sell_good_orders_path(@sell_good.id),class:"item-red-btn"%>
+      <% if  @sell_good.order.blank? %>
+        <%= link_to '購入画面に進む', sell_good_orders_path(@sell_good.id),class:"item-red-btn"%>
+      <% end %>
     <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
